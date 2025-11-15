@@ -77,6 +77,16 @@ export default function App() {
      return filtered;  // Return the filtered and sorted array of podcasts
   }, [podcasts, searchQuery, sortBy, selectedGenres]);
 
+    /**
+   * Calculates pagination values based on processed results
+   * Per User Story: Display results in manageable chunks
+   */
+
+  const totalPages = Math.ceil(processedPodcasts.length / itemsPerPage); // Total number of pages needed to show all podcasts
+  const startIndex = (currentPage - 1) * itemsPerPage;                    // Index of the first podcast to show on the current page
+  const endIndex = startIndex + itemsPerPage;                             // Index of the last podcast to show on the current page
+  const paginatedPodcasts = processedPodcasts.slice(startIndex, endIndex);// Slice the processed podcasts array to get only the items for the current page
+
   return (
     <>
       <Header />
