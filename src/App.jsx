@@ -177,6 +177,15 @@ export default function App() {
                   Showing {paginatedPodcasts.length} of {processedPodcasts.length} podcast{processedPodcasts.length !== 1 ? 's' : ''}
                 </div>
               </div>
+
+{/* Genre filter component */}
+                <GenreFilter 
+                selectedGenres={selectedGenres} // Currently selected genre IDs
+                onChange={handleGenreChange}    // Handler to update selected genres
+
+                genres={genres}                 // Array of all available genres
+              />
+            </section>
       </main>
     </>
   );
