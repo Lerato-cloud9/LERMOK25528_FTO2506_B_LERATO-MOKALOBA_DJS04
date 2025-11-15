@@ -146,7 +146,7 @@ export default function App() {
       <main>
         {loading && (
           <div className="message-container">
-            <div className="spinner"></div>
+            <div className="spinner" role="status" aria-label="Loading"></div>
             <p>Loading podcasts...</p>
           </div>
         )}
@@ -159,9 +159,24 @@ export default function App() {
           </div>
         )}
 
+{/* Only show controls if data is loaded and there’s no error */}
         {!loading && !error && (
-          <PodcastGrid podcasts={podcasts} genres={genres} />
-        )}
+          <>
+            <section className="controls-section" aria-label="Search and filter controls">
+              <SearchBar 
+                value={searchQuery} 
+                onChange={handleSearchChange} 
+              />
+              
+              <div className="controls-row">
+                <SortControls 
+                  value={sortBy} 
+                  onChange={handleSortChange} 
+                />
+                <div className="results-count" role="status" aria-live="polite">
+                  Showing {paginatedPodcasts.length} of {processedPodcasts.length} podcast{processedPodcasts.length !== 1 ? 's' : ''}
+                </div>
+              </div>
       </main>
     </>
   );
