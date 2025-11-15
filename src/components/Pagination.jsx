@@ -18,3 +18,21 @@ export default function GenreFilter({ selectedGenres, onChange, genres }) {
       onChange([...selectedGenres, genreId]);
     }
   };
+
+  // This function clears all selected genres
+  // It resets the list back to an empty array
+  const clearFilters = () => {
+    onChange([]);  // Update the parent with no selected genres
+  };
+
+  return (
+    <div className="genre-filter">
+      <div className="filter-header">
+        <label>Filter by Genre:</label>
+        {selectedGenres.length > 0 && (  {/* Only show the "Clear All" button if there is at least one selected genre */}
+
+          <button onClick={clearFilters} className="clear-btn"> {/*When clicked, runs the function to clear genres */}
+            Clear All
+          </button>
+        )}
+      </div>
