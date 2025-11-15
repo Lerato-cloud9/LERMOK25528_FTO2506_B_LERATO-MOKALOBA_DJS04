@@ -12,3 +12,14 @@ export default function Pagination({ currentPage, totalPages, onPageChange }) {
   const pages = [];    // Array to store the page numbers that will be shown
   const maxVisible = 5; // Maximum number of page buttons visible at a time
 
+// Calculate which page numbers to show
+  let startPage = Math.max(1, currentPage - Math.floor(maxVisible / 2));    // startPage = the first page number to show
+  let endPage = Math.min(totalPages, startPage + maxVisible - 1);          // endPage = the last page number to show
+  
+  if (endPage - startPage < maxVisible - 1) {           // Adjust startPage if there aren’t enough pages at the end
+    startPage = Math.max(1, endPage - maxVisible + 1);
+  }
+
+  for (let i = startPage; i <= endPage; i++) {         // Fill the pages array with the page numbers from startPage to endPage
+    pages.push(i);
+  }
