@@ -95,6 +95,15 @@ export default function App() {
     setCurrentPage(1);  // Whenever search, genre, or sort changes, go back to the first page
   }, [searchQuery, selectedGenres, sortBy]); // This will run effect when any of these change
 
+    /**
+   * Handles page navigation and scrolls to top
+   * Per User Story: Smooth page transitions with state persistence
+   */
+  const handlePageChange = useCallback((page) => {
+    setCurrentPage(page);  // Update the current page state
+    window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll smoothly to the top of the page
+  }, []); // Empty dependency array because function does not rely on other variables
+
 
   return (
     <>
