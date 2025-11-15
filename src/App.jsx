@@ -57,6 +57,23 @@ export default function App() {
       );
     }
 
+  // Apply sorting based on selected criteria from the dropdown
+    filtered.sort((a, b) => {
+      switch (sortBy) {
+        case "newest":  // Sort by most recently updated first
+          return new Date(b.updated) - new Date(a.updated);
+        case "oldest":  // Sort by oldest updated first
+          return new Date(a.updated) - new Date(b.updated);
+        case "a-z":   // Sort alphabetically from A to Z
+          return a.title.localeCompare(b.title);
+        case "z-a":  // Sort alphabetically from Z to A
+
+          return b.title.localeCompare(a.title);
+        default:
+          return 0;  // If no sort option matches, leave order unchanged
+      }
+    });
+
   return (
     <>
       <Header />
