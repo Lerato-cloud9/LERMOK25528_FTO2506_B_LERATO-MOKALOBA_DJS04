@@ -63,3 +63,18 @@ export default function Pagination({ currentPage, totalPages, onPageChange }) {
           {page}   {/* Show the page number */}
         </button>
       ))}
+
+{/* Show ellipsis and last page button if endPage is less than totalPages */}
+        {endPage < totalPages && (
+        <>
+        {/* Show ellipsis if there’s a gap between endPage and the last page */}
+          {endPage < totalPages - 1 && <span className="ellipsis">...</span>}
+          <button 
+            onClick={() => onPageChange(totalPages)}  // Go to the last page
+            className="page-btn"
+            aria-label={`Go to page ${totalPages}`}  // Accessibility label
+          >
+            {totalPages}  {/* Display the last page number */}
+          </button>
+        </>
+      )}
