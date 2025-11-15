@@ -30,7 +30,6 @@ export default function Pagination({ currentPage, totalPages, onPageChange }) {
     <nav className="pagination" aria-label="Pagination navigation">
         {/* Shows current page, total pages, and total results */}
       <div className="pagination-info">
-        Page {currentPage} of {totalPages} ({totalResults} total results)
       </div>
       
       {/* Container for pagination buttons */}
