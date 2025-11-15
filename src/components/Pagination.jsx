@@ -24,6 +24,8 @@ export default function Pagination({ currentPage, totalPages, onPageChange }) {
     pages.push(i);
   }
 
+  if (totalPages <= 1) return null;
+  
     return (
     <div className="pagination">     {/* Main container for pagination buttons */}
       <button
