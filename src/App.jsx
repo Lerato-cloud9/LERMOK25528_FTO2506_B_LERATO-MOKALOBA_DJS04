@@ -104,6 +104,17 @@ export default function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll smoothly to the top of the page
   }, []); // Empty dependency array because function does not rely on other variables
 
+    /**
+   * Resets all filters to default state
+   * Per User Story: Allow users to clear all selections easily
+   */
+  const handleResetFilters = useCallback(() => {
+    setSearchQuery("");             // Clear the search input
+    setSelectedGenres([]);          // Deselect all genres
+    setSortBy("newest");            // Reset sorting to default
+    setCurrentPage(1);              // Go back to the first page
+  }, []);
+
 
   return (
     <>
