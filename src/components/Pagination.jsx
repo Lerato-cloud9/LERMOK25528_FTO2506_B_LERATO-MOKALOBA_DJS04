@@ -23,3 +23,14 @@ export default function Pagination({ currentPage, totalPages, onPageChange }) {
   for (let i = startPage; i <= endPage; i++) {         // Fill the pages array with the page numbers from startPage to endPage
     pages.push(i);
   }
+
+    return (
+    <div className="pagination">     {/* Main container for pagination buttons */}
+      <button
+        onClick={() => onPageChange(currentPage - 1)}  // Go to the previous page when clicked
+        disabled={currentPage === 1}                  // Disable if already on the first page
+        className="page-btn"                     
+        aria-label="Previous page"                   // Accessibility label for screen readers
+      >
+        Previous                                    {/* Button text shown to the user */}
+      </button>
