@@ -74,6 +74,9 @@ export default function App() {
       }
     });
 
+     return filtered;  // Return the filtered and sorted array of podcasts
+  }, [podcasts, searchQuery, sortBy, selectedGenres]);
+
   return (
     <>
       <Header />
