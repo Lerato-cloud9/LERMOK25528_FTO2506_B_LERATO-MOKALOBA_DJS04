@@ -192,3 +192,13 @@ body {
 .clear-search:hover {
   background: #cbd5e0;
 }
+
+/* Controls Row */
+.controls-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
