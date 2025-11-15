@@ -115,6 +115,30 @@ export default function App() {
     setCurrentPage(1);              // Go back to the first page
   }, []);
 
+  /**
+   * Handles search query changes
+   * Per User Story: Dynamic search with immediate updates
+   */
+  const handleSearchChange = useCallback((value) => {
+    setSearchQuery(value);    // Update the searchQuery state whenever user types
+  }, []);
+
+  /**
+   * Handles sort option changes
+   * Per User Story: Sort functionality that works with other filters
+   */
+  const handleSortChange = useCallback((value) => {
+    setSortBy(value);  // Update the sortBy state when user selects a new sort option
+  }, []);
+
+  /**
+   * Handles genre filter changes
+   * Per User Story: Multi-select genre filtering
+   */
+  const handleGenreChange = useCallback((genres) => {
+    setSelectedGenres(genres);  // Update selectedGenres state when user selects/deselects genres
+  }, []);
+
 
   return (
     <>
