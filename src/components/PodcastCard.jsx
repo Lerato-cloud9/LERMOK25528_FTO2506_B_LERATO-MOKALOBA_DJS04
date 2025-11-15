@@ -15,7 +15,7 @@ import { formatDate } from "../utils/formatDate";
  *
  * @returns {JSX.Element} The rendered podcast card component.
  */
-export default function PodcastCard({ podcast, genres }) {
+export default function PodcastCard({ podcast, genres, onClick }) {
   const genreSpans = podcast.genres.map((id) => {
     const match = genres.find((genre) => genre.id === id);
     return (
@@ -26,7 +26,7 @@ export default function PodcastCard({ podcast, genres }) {
   });
 
   return (
-    <div className="card">
+    <div className="card" onClick={onClick}>
       <img src={podcast.image} alt={podcast.title} />
 
       <h3>{podcast.title}</h3>

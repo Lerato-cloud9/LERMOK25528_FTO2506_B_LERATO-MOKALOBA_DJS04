@@ -11,12 +11,17 @@ import PodcastCard from "./PodcastCard";
  * @returns {JSX.Element} The rendered grid of podcast cards.
  *
  */
-export default function PodcastGrid({ podcasts, genres }) {
+export default function PodcastGrid({ podcasts, genres, onPodcastClick }) {
   return (
-    <section className="grid" aria-label="Podcast results">
+        <div className="grid">
       {podcasts.map((podcast) => (
-        <PodcastCard key={podcast.id} podcast={podcast} genres={genres} />
+        <PodcastCard 
+          key={podcast.id} 
+          podcast={podcast} 
+          genres={genres}
+          onClick={() => onPodcastClick(podcast.id)}
+        />
       ))}
-    </section>
+    </div>
   );
 }
