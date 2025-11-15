@@ -38,6 +38,25 @@ export default function App() {
     fetchPodcasts(setPodcasts, setError, setLoading);
   }, []);
 
+  // Processes podcasts by applying search, filter, and sort operations
+    const processedPodcasts = useMemo(() => {
+    let filtered = [...podcasts];
+
+    // Apply search filter - matches any part of title (case-insensitive)
+      if (searchQuery.trim()) {
+      const query = searchQuery.toLowerCase().trim();
+      filtered = filtered.filter(podcast => 
+        podcast.title.toLowerCase().includes(query)
+      );
+    }
+
+  // Apply genre filter - show podcasts that match selected genres
+    if (selectedGenres.length > 0) {
+      filtered = filtered.filter(podcast =>
+        podcast.genres.some(genreId => selectedGenres.includes(genreId))
+      );
+    }
+
   return (
     <>
       <Header />
