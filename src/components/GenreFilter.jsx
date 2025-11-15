@@ -27,3 +27,14 @@ export default function GenreFilter({ selectedGenres, onChange, genres }) {
   const clearFilters = () => {
     onChange([]);
   };
+
+    return (
+    <div className="genre-filter">
+      <div className="filter-header">
+        <label>Filter by Genre:</label>
+        {selectedGenres.length > 0 && (
+          <button onClick={clearFilters} className="clear-btn">
+            Clear All
+          </button>
+        )}
+      </div>
