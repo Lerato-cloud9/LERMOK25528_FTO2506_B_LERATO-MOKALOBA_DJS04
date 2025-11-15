@@ -30,6 +30,10 @@ export default function App() {
   // Configuration
   const itemsPerPage = 12;
 
+    /**
+   * Fetches podcast data from the API on component mount
+   * Load podcast data for browsing
+   */
   useEffect(() => {
     fetchPodcasts(setPodcasts, setError, setLoading);
   }, []);
