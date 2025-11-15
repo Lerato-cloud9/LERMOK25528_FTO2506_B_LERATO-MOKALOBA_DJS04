@@ -7,6 +7,7 @@
  * @param {Array<Object>} props.genres - Array of all available genres
  * @returns {JSX.Element} The rendered genre filter interface
  */
+import { useCallback } from "react";
 
 export default function GenreFilter({ selectedGenres, onChange, genres }) {
 
@@ -34,21 +35,23 @@ export default function GenreFilter({ selectedGenres, onChange, genres }) {
       <div className="filter-header">   {/* Header row with label + clear button */}
         <label>Filter by Genre:</label> {/* Label showing what this section does */}
         {selectedGenres.length > 0 && (  /* Only show "Clear All" if any genre is selected */
-          <button onClick={clearFilters} // Runs function to reset all selections
+          <button 
+          onClick={clearFilters} // Runs function to reset all selections
           className="clear-btn"          // Styling for the clear button
+          aria-label={`Clear all filters (${selectedGenres.length} selected)`}
           >         
             Clear All
           </button>
         )}
       </div>
-      <div className="genre-chips">    {/* Container for clickable genre buttons */}
+      <div className="genre-chips" role="group" aria-label="Genre filters">    {/* Container for clickable genre buttons */}
         {genres.map(genre => (         /* Loop through all genres and render buttons */
           <button
             key={genre.id}             // Unique key for React list rendering
             onClick={() => handleGenreToggle(genre.id)} // Toggle when clicked
             className={`genre-chip ${selectedGenres.includes(genre.id) ? 'active' : ''}`} // Adds 'active' class only if this genre is selected
-
             aria-pressed={selectedGenres.includes(genre.id)}
+            aria-label={`Filter by ${genre.title}`}
           >
             {genre.title}    {/* Show the name of the genre */}                               
           </button>
