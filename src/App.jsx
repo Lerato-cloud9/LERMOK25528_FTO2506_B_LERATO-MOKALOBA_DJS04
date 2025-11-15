@@ -1,8 +1,12 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo, useCallback } from "react";
 import PodcastGrid from "./components/PodcastGrid";
+import Header from "./components/Header";
+import SearchBar from "./components/SearchBar";
+import SortControls from "./components/SortControls";
+import GenreFilter from "./components/GenreFilter";
+import Pagination from "./components/Pagination";
 import { genres } from "./data";
 import { fetchPodcasts } from "./api/fetchPodcasts";
-import Header from "./components/Header";
 
 /**
  * App - The root component of the Podcast Explorer application. It handles:
