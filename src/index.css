@@ -449,3 +449,17 @@ body {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
 }
+
+/* Error Message */
+.error {
+  padding: 1.5rem 2rem;
+  border: 2px solid #fc8181;
+  background: #fff5f5;
+  color: #c53030;
+  border-radius: 12px;
+  font-weight: 500;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
