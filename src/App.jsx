@@ -21,6 +21,12 @@ export default function App() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+    // UI control state - manages user interactions
+  const [searchQuery, setSearchQuery] = useState("");
+  const [sortBy, setSortBy] = useState("newest");
+  const [selectedGenres, setSelectedGenres] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+
   useEffect(() => {
     fetchPodcasts(setPodcasts, setError, setLoading);
   }, []);
