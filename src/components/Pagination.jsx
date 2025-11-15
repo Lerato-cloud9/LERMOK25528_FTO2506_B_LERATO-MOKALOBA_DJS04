@@ -26,16 +26,23 @@ export default function Pagination({ currentPage, totalPages, onPageChange }) {
 
   if (totalPages <= 1) return null;
   
-    return (
-    <div className="pagination">     {/* Main container for pagination buttons */}
-      <button
-        onClick={() => onPageChange(currentPage - 1)}  // Go to the previous page when clicked
-        disabled={currentPage === 1}                  // Disable if already on the first page
-        className="page-btn"                     
-        aria-label="Previous page"                   // Accessibility label for screen readers
-      >
-        Previous                                    {/* Button text shown to the user */}
-      </button>
+   return (
+    <nav className="pagination" aria-label="Pagination navigation">
+        {/* Shows current page, total pages, and total results */}
+      <div className="pagination-info">
+        Page {currentPage} of {totalPages} ({totalResults} total results)
+      </div>
+      
+      {/* Container for pagination buttons */}
+      <div className="pagination-controls">
+        <button
+          onClick={() => onPageChange(currentPage - 1)}   // Go to previous page when clicked
+          disabled={currentPage === 1}                    // Disable if already on the first page
+          className="page-btn"
+          aria-label="Go to previous page"                // Accessibility label
+        >
+          ← Previous
+        </button>
 
 {/* Show first page button and ellipsis if startPage is greater than 1 */}
       {startPage > 1 && (
@@ -86,10 +93,11 @@ export default function Pagination({ currentPage, totalPages, onPageChange }) {
         onClick={() => onPageChange(currentPage + 1)} // Go to the next page when clicked
         disabled={currentPage === totalPages}         // Disable if already on the last page
         className="page-btn"
-        aria-label="Next page"                        // Accessibility label for screen readers
+        aria-label="Go to next page"                       // Accessibility label for screen readers
       >
-        Next   {/* Button text shown to the user */}
+        Next →   {/* Button text shown to the user */}
       </button>
     </div>
+    </nav>
   );
 }
