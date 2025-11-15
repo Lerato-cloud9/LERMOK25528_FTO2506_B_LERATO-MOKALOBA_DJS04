@@ -237,3 +237,65 @@ body {
   font-size: 0.95rem;
   font-weight: 500;
 }
+
+/* Genre Filter */
+.genre-filter {
+  border-top: 2px solid #e2e8f0;
+  padding-top: 1.5rem;
+}
+
+.filter-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.filter-header label {
+  font-weight: 600;
+  color: #4a5568;
+}
+
+.clear-btn {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  background: #fff5f5;
+  border: 1px solid #fc8181;
+  border-radius: 6px;
+  color: #c53030;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-weight: 500;
+}
+
+.clear-btn:hover {
+  background: #feb2b2;
+}
+
+.genre-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.625rem;
+}
+
+.genre-chip {
+  padding: 0.625rem 1.25rem;
+  border: 2px solid #e2e8f0;
+  background: white;
+  border-radius: 24px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.genre-chip:hover {
+  border-color: #667eea;
+  transform: translateY(-2px);
+}
+
+.genre-chip.active {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-color: transparent;
+  color: white;
+}
