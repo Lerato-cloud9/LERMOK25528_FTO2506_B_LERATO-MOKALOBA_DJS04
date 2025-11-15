@@ -32,7 +32,7 @@ export default function App() {
 
     /**
    * Fetches podcast data from the API on component mount
-   * Load podcast data for browsing
+   * As per user story:Load podcast data for browsing
    */
   useEffect(() => {
     fetchPodcasts(setPodcasts, setError, setLoading);
