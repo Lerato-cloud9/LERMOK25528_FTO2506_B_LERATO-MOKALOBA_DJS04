@@ -87,6 +87,15 @@ export default function App() {
   const endIndex = startIndex + itemsPerPage;                             // Index of the last podcast to show on the current page
   const paginatedPodcasts = processedPodcasts.slice(startIndex, endIndex);// Slice the processed podcasts array to get only the items for the current page
 
+    /**
+   * Resets to page 1 when filters change
+   * Per User Story: Ensure pagination reflects filtered results correctly
+   */
+  useEffect(() => {
+    setCurrentPage(1);  // Whenever search, genre, or sort changes, go back to the first page
+  }, [searchQuery, selectedGenres, sortBy]); // This will run effect when any of these change
+
+
   return (
     <>
       <Header />
