@@ -186,6 +186,43 @@ export default function App() {
                 genres={genres}                 // Array of all available genres
               />
             </section>
+
+{/* Show message if no podcasts match search/filters */}
+            {processedPodcasts.length === 0 ? (
+              <div className="no-results" role="status">
+                <div className="no-results-icon">🔍</div>
+
+                {/* Heading */}
+                <h2>No podcasts found</h2>
+
+                {/* Explanation text */}
+                <p>
+                  {searchQuery && `No results for "${searchQuery}". `}
+                  {selectedGenres.length > 0 && `Try different genre filters. `}
+                  Try adjusting your search or filters.
+                </p>
+
+                {/* Button to reset all filters */}
+                <button onClick={handleResetFilters} className="reset-btn">
+                  Reset All Filters
+                </button>
+              </div>
+            ) : (
+              <>
+              {/* Display the grid of podcasts for the current page */}
+                <PodcastGrid podcasts={paginatedPodcasts} genres={genres} />
+
+               {/* Pagination controls for navigating pages */}
+                <Pagination
+                  currentPage={currentPage}           // Current page number
+                  totalPages={totalPages}             // Total number of pages
+                  onPageChange={handlePageChange}      // Handler to change page
+                  totalResults={processedPodcasts.length} // Total filtered podcasts
+                />
+              </>
+            )}
+          </>
+        )}
       </main>
     </>
   );
