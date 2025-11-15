@@ -11,7 +11,8 @@ export default function SearchBar({ value, onChange }) {
   return (
     <div className="search-bar">   {/* Container for the search input */}
       <label htmlFor="search-input" className="sr-only">Search podcasts</label>
-      <input          {/* Text input for searching podcasts */}
+      {/* Text input for searching podcasts */}
+      <input          
         id="search-input"
         type="text"                                  // Input type is text because user types words
         placeholder="Search podcasts by title..."    // Light text shown before the user types
