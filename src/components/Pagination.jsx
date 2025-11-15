@@ -29,10 +29,26 @@ export default function GenreFilter({ selectedGenres, onChange, genres }) {
     <div className="genre-filter">
       <div className="filter-header">
         <label>Filter by Genre:</label>
-        {selectedGenres.length > 0 && (  {/* Only show the "Clear All" button if there is at least one selected genre */}
-
-          <button onClick={clearFilters} className="clear-btn"> {/*When clicked, runs the function to clear genres */}
+        {/* Only show "Clear All" if at least one genre is selected */}
+        {selectedGenres.length > 0 && (   
+          <button onClick={clearFilters} // Clears all selected genres when clicked
+          className="clear-btn">  
             Clear All
           </button>
         )}
       </div>
+      <div className="genre-chips">  {/* Container for the clickable genre buttons */}
+        {genres.map(genre => (       /* Loop through all available genres */
+          <button
+            key={genre.id}
+            onClick={() => handleGenreToggle(genre.id)}
+            className={`genre-chip ${selectedGenres.includes(genre.id) ? 'active' : ''}`} // Adds the "active" class only if this genre is selected
+            aria-pressed={selectedGenres.includes(genre.id)}                              // Accessibility: tells screen readers if this button is currently pressed/active
+          >
+            {genre.title}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
