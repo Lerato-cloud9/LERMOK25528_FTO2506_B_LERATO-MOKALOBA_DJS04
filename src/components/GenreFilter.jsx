@@ -21,20 +21,39 @@ export default function GenreFilter({ selectedGenres, onChange, genres }) {
     }
   };
 
-    /**
+/**
    * Clear all selected genres
+   * (This auto-clears the selectedGenres array)
    */
   const clearFilters = () => {
-    onChange([]);
+    onChange([]);                        // Reset genre selection to an empty list
   };
 
     return (
-    <div className="genre-filter">
-      <div className="filter-header">
-        <label>Filter by Genre:</label>
-        {selectedGenres.length > 0 && (
-          <button onClick={clearFilters} className="clear-btn">
+    <div className="genre-filter">      {/* Wrapper container for genre filtering UI */}
+      <div className="filter-header">   {/* Header row with label + clear button */}
+        <label>Filter by Genre:</label> {/* Label showing what this section does */}
+        {selectedGenres.length > 0 && (  /* Only show "Clear All" if any genre is selected */
+          <button onClick={clearFilters} // Runs function to reset all selections
+          className="clear-btn"          // Styling for the clear button
+          >         
             Clear All
           </button>
         )}
       </div>
+      <div className="genre-chips">    {/* Container for clickable genre buttons */}
+        {genres.map(genre => (         /* Loop through all genres and render buttons */
+          <button
+            key={genre.id}             // Unique key for React list rendering
+            onClick={() => handleGenreToggle(genre.id)} // Toggle when clicked
+            className={`genre-chip ${selectedGenres.includes(genre.id) ? 'active' : ''}`} // Adds 'active' class only if this genre is selected
+
+            aria-pressed={selectedGenres.includes(genre.id)}
+          >
+            {genre.title}    {/* Show the name of the genre */}                               
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
