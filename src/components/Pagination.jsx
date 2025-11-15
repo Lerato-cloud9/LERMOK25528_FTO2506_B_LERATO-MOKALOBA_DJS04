@@ -45,8 +45,21 @@ export default function Pagination({ currentPage, totalPages, onPageChange }) {
           >
             1
           </button>                          1 {/* Display number 1 */}
-          
+
           {/* Show ellipsis if there’s a gap between page 1 and startPage */}
           {startPage > 2 && <span className="ellipsis">...</span>}
         </>
       )}
+
+{/* Render buttons for the visible pages */}
+        {pages.map(page => (
+        <button
+          key={page}                        // Unique key for React rendering
+          onClick={() => onPageChange(page)}// Go to the selected page on click
+          className={`page-btn ${page === currentPage ? 'active' : ''}`} // Add "active" class if this page is the current page
+          aria-label={`Go to page ${page}`}                              // Accessibility label for screen readers
+          aria-current={page === currentPage ? 'page' : undefined}       // Marks the current page for accessibility
+        >
+          {page}   {/* Show the page number */}
+        </button>
+      ))}
