@@ -20,3 +20,10 @@ export default function GenreFilter({ selectedGenres, onChange, genres }) {
       onChange([...selectedGenres, genreId]);
     }
   };
+
+    /**
+   * Clear all selected genres
+   */
+  const clearFilters = () => {
+    onChange([]);
+  };
