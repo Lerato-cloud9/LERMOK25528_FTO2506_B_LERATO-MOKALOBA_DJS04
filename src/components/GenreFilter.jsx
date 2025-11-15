@@ -14,21 +14,21 @@ export default function GenreFilter({ selectedGenres, onChange, genres }) {
   // Toggle a genre on or off when the user clicks on it
   // genreId = the ID of the genre being selected or unselected
 
-  const handleGenreToggle = (genreId) => {                   // If the genre is already selected, remove it from the list
+  const handleGenreToggle = useCallback((genreId) => {                   // If the genre is already selected, remove it from the list
     if (selectedGenres.includes(genreId)) {
       onChange(selectedGenres.filter(id => id !== genreId));
     } else {                                                  // Otherwise, add the new genre to the selected list
       onChange([...selectedGenres, genreId]);
     }
-  };
+  }, [selectedGenres, onChange]);
 
-/**
+  /**
    * Clear all selected genres
    * (This auto-clears the selectedGenres array)
    */
-  const clearFilters = () => {
-    onChange([]);                        // Reset genre selection to an empty list
-  };
+  const clearFilters = useCallback(() => {
+    onChange([]); // Reset genre selection to an empty list
+  }, [onChange]); 
 
     return (
     <div className="genre-filter">      {/* Wrapper container for genre filtering UI */}
