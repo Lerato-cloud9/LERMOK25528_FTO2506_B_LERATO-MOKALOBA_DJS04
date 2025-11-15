@@ -16,11 +16,12 @@ export default function SortControls({ value, onChange }) {
         value={value}                               // Current selected sorting option
         onChange={(e) => onChange(e.target.value)}  // Sends selected value back to parent
         className="sort-select"                     // CSS class for styling the dropdown
+        aria-label="Sort podcasts"
       >
-        <option value="newest">Newest First</option> {/* Sort by latest updated */}
-        <option value="oldest">Oldest First</option> {/* Sort by earliest updated */}
-        <option value="a-z">Title A-Z</option>       {/* Sort alphabetically ascending */}
-        <option value="z-a">Title Z-A</option>       {/* Sort alphabetically descending */}
+        <option value="newest">📅 Newest First</option> {/* Sort by latest updated */}
+        <option value="oldest">📅 Oldest First</option> {/* Sort by earliest updated */}
+        <option value="a-z">🔤 Title A-Z</option>      {/* Sort alphabetically ascending */}
+        <option value="z-a">🔤 Title Z-A</option>      {/* Sort alphabetically descending */}
       </select>
     </div>
   );
