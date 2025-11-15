@@ -34,3 +34,19 @@ export default function Pagination({ currentPage, totalPages, onPageChange }) {
       >
         Previous                                    {/* Button text shown to the user */}
       </button>
+
+{/* Show first page button and ellipsis if startPage is greater than 1 */}
+      {startPage > 1 && (
+        <>
+          <button 
+            onClick={() => onPageChange(1)}   // Go to the first page
+            className="page-btn"              // Styling class
+            aria-label="Go to page 1"         // Accessibility label
+          >
+            1
+          </button>                          1 {/* Display number 1 */}
+          
+          {/* Show ellipsis if there’s a gap between page 1 and startPage */}
+          {startPage > 2 && <span className="ellipsis">...</span>}
+        </>
+      )}
