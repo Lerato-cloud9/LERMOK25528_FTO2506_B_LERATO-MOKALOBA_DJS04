@@ -78,3 +78,16 @@ export default function Pagination({ currentPage, totalPages, onPageChange }) {
           </button>
         </>
       )}
+
+{/* Next button */}
+        <button
+        onClick={() => onPageChange(currentPage + 1)} // Go to the next page when clicked
+        disabled={currentPage === totalPages}         // Disable if already on the last page
+        className="page-btn"
+        aria-label="Next page"                        // Accessibility label for screen readers
+      >
+        Next   {/* Button text shown to the user */}
+      </button>
+    </div>
+  );
+}
