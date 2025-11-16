@@ -53,6 +53,9 @@ export default function App() {
       return 0;
     });
 
+     return result;
+  }, [podcasts, searchQuery, sortBy, selectedGenres]);
+
   // Apply genre filter - show podcasts that match selected genres
     if (selectedGenres.length > 0) {
       filtered = filtered.filter(podcast =>
