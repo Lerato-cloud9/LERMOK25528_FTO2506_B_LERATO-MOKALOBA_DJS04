@@ -39,12 +39,12 @@ export default function App() {
   }, []);
 
   // Processes podcasts by applying search, filter, and sort operations
-    const processedPodcasts = useMemo(() => {
+  const processedPodcasts = useMemo(() => {
     let result = podcasts.filter(p => 
       p.title.toLowerCase().includes(searchQuery.toLowerCase()) &&
-      (selectedGenres === "all" || p.genres.includes(parseInt(selectedGenres)))
+      (selectedGenre === "all" || p.genres.includes(parseInt(selectedGenre)))
     );
-
+    
     result.sort((a, b) => {
       if (sortBy === "newest") return new Date(b.updated) - new Date(a.updated);
       if (sortBy === "oldest") return new Date(a.updated) - new Date(b.updated);
