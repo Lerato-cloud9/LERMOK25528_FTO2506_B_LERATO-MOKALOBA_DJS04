@@ -1,4 +1,6 @@
 import { formatDate } from "../utils/formatDate";
+import { useState } from 'react';  
+import PodcastModal from './PodcastModal'; 
 
 /**
  * Renders a single podcast preview card with image, title, number of seasons,
@@ -24,6 +26,10 @@ export default function PodcastCard({ podcast, genres, onClick }) {
       </span>
     );
   });
+
+  const handleCardClick = () => {
+    setIsModalOpen(true);
+    if (onClick) onClick();
 
   return (
     <div className="card" onClick={onClick}>
