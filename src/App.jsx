@@ -115,3 +115,30 @@ export default function App() {
                 </div>
               </div>
             </section>
+
+                       {processedPodcasts.length === 0 ? (
+              <div className="no-results">
+                <div className="no-results-icon">🔍</div>
+                <h2>No podcasts found</h2>
+                <p>Try adjusting your search or filters.</p>
+                <button onClick={resetFilters} className="reset-btn">
+                  Reset All Filters
+                </button>
+              </div>
+            ) : (
+              <>
+                <PodcastGrid podcasts={paginatedPodcasts} genres={genres} />
+                <Pagination
+                  currentPage={currentPage}
+                  totalPages={totalPages}
+                  onPageChange={handlePageChange}
+                  totalResults={processedPodcasts.length}
+                />
+              </>
+            )}
+          </>
+        )}
+      </main>
+    </>
+  );
+}
