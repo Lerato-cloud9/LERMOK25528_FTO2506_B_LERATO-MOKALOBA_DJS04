@@ -29,3 +29,49 @@ export default function PodcastModal({ podcast, genres, isOpen, onClose }) {
       onClose();
     }
   };
+
+    // Map genre IDs to genre titles
+  const genreNames = podcast.genres?.map((id) => {
+    const match = genres?.find((genre) => genre.id === id);
+    return match ? match.title : `Genre ${id}`;
+  }) || [];
+
+  return (
+    <div 
+      className="modal-backdrop" 
+      onClick={handleBackdropClick}
+      onKeyDown={handleKeyDown}
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-title"
+    >
+      <div className="modal-content">
+        {/* Close button */}
+        <button 
+          className="modal-close"
+          onClick={onClose}
+          aria-label="Close modal"
+        >
+          ✕
+        </button>
+
+        {/* Modal header with image and basic info */}
+        <div className="modal-header">
+          <div className="modal-image-container">
+            <img 
+              src={podcast.image || 'https://via.placeholder.com/300x300?text=No+Image'} 
+              alt={podcast.title}
+              className="modal-image"
+            />
+          </div>
+
+          <div className="modal-header-info">
+            <h1 id="modal-title" className="modal-title">{podcast.title}</h1>
+
+            {/* Description */}
+            {podcast.description && (
+              <div className="modal-description">
+                <h2>Description</h2>
+                <p>{podcast.description}</p>
+              </div>
+            )}
