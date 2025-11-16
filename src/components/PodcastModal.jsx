@@ -150,9 +150,9 @@ export default function PodcastModal({ podcast, genres, isOpen, onClose }) {
         .modal-content {
           background: white;
           border-radius: 12px;
-          max-width: 1000px;
+          max-width: 800px;
           width: 100%;
-          max-height: 90vh;
+          max-height: 80vh;
           overflow-y: auto;
           position: relative;
           animation: modalSlideIn 0.3s ease-out;
@@ -227,7 +227,7 @@ export default function PodcastModal({ podcast, genres, isOpen, onClose }) {
         }
 
         .modal-title {
-          font-size: 32px;
+          font-size: 28px;
           font-weight: 700;
           color: #1a1a1a;
           margin: 0;
@@ -243,7 +243,7 @@ export default function PodcastModal({ podcast, genres, isOpen, onClose }) {
         }
 
         .modal-description p {
-          font-size: 16px;
+          font-size: 14px;
           line-height: 1.6;
           color: #4b5563;
           margin: 0;
@@ -269,16 +269,16 @@ export default function PodcastModal({ podcast, genres, isOpen, onClose }) {
           display: flex;
           align-items: center;
           gap: 8px;
-          font-size: 15px;
+          font-size: 14px;
           color: #6b7280;
         }
 
         .modal-seasons {
-          padding: 40px;
+          padding: 30px;
         }
 
         .seasons-title {
-          font-size: 24px;
+          font-size: 20px;
           font-weight: 700;
           color: #1a1a1a;
           margin: 0 0 24px 0;
@@ -294,7 +294,7 @@ export default function PodcastModal({ podcast, genres, isOpen, onClose }) {
           display: flex;
           justify-content: space-between;
           align-items: center;
-          padding: 24px;
+          padding: 14px;
           border: 1px solid #e5e7eb;
           border-radius: 8px;
           cursor: pointer;
@@ -311,7 +311,7 @@ export default function PodcastModal({ podcast, genres, isOpen, onClose }) {
         }
 
         .season-title {
-          font-size: 18px;
+          font-size: 14px;
           font-weight: 600;
           color: #1a1a1a;
           margin: 0 0 4px 0;
