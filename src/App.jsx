@@ -24,7 +24,7 @@ export default function App() {
   // UI control state - manages user interactions
   const [searchQuery, setSearchQuery] = useState("");
   const [sortBy, setSortBy] = useState("newest");
-  const [selectedGenres, setSelectedGenres] = useState("all");
+  const [selectedGenre, setSelectedGenre] = useState("all");
   const [currentPage, setCurrentPage] = useState(1);
 
   // Configuration
