@@ -157,7 +157,7 @@ body {
 }
 
 .search-input {
-  width: 100%;
+  width: 200px;
   padding: 1rem 3rem 1rem 1rem;
   font-size: 1rem;
   border: 2px solid #e2e8f0;
