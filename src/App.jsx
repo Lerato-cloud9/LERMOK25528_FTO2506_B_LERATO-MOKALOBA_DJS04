@@ -52,9 +52,9 @@ export default function App() {
       if (sortBy === "z-a") return b.title.localeCompare(a.title);
       return 0;
     });
-    
-     return result;
-  }, [podcasts, searchQuery, sortBy, selectedGenres]);
+
+    return result;
+  }, [podcasts, searchQuery, sortBy, selectedGenre]);
 
   // Pagination
   const totalPages = Math.ceil(processedPodcasts.length / itemsPerPage);
