@@ -22,3 +22,10 @@ export default function PodcastModal({ podcast, genres, isOpen, onClose }) {
       onClose();
     }
   };
+
+    // Close modal on Escape key
+  const handleKeyDown = (e) => {
+    if (e.key === 'Escape') {
+      onClose();
+    }
+  };
