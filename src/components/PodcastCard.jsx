@@ -1,6 +1,7 @@
 import { formatDate } from "../utils/formatDate";
-import { useState } from 'react';  
-import PodcastModal from './PodcastModal'; 
+import { useState } from 'react';
+import PodcastModal from './PodcastModal';
+
 
 /**
  * Renders a single podcast preview card with image, title, number of seasons,
@@ -18,6 +19,9 @@ import PodcastModal from './PodcastModal';
  * @returns {JSX.Element} The rendered podcast card component.
  */
 export default function PodcastCard({ podcast, genres, onClick }) {
+  // State for modal
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const genreSpans = podcast.genres.map((id) => {
     const match = genres.find((genre) => genre.id === id);
     return (
@@ -27,17 +31,18 @@ export default function PodcastCard({ podcast, genres, onClick }) {
     );
   });
 
+  // Handle card click
   const handleCardClick = () => {
     setIsModalOpen(true);
-    if (onClick) onClick(); 
+    if (onClick) onClick();
   };
 
   return (
     <>
       <div 
         className="card" 
-        onClick={handleCardClick} 
-        style={{ cursor: 'pointer' }} 
+        onClick={handleCardClick}
+        style={{ cursor: 'pointer' }}
       >
         <img src={podcast.image} alt={podcast.title} />
 
@@ -47,7 +52,7 @@ export default function PodcastCard({ podcast, genres, onClick }) {
         <p className="updated-text">Updated {formatDate(podcast.updated)}</p>
       </div>
 
-
+      {/* Modal */}
       <PodcastModal 
         podcast={podcast}
         isOpen={isModalOpen}
