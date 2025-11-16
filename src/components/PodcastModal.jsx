@@ -89,7 +89,7 @@ export default function PodcastModal({ podcast, genres, isOpen, onClose }) {
                 </div>
               </div>
             )}
-                 
+
                         {/* Last updated */}
             {podcast.updated && (
               <div className="modal-updated">
@@ -101,4 +101,32 @@ export default function PodcastModal({ podcast, genres, isOpen, onClose }) {
               </div>
             )}
           </div>
-        </div>      
+        </div> 
+
+                {/* Seasons section */}
+        <div className="modal-seasons">
+          <h2 className="seasons-title">Seasons</h2>
+          
+          {podcast.seasons ? (
+            <div className="seasons-list">
+              {[...Array(podcast.seasons)].map((_, index) => (
+                <div 
+                  key={index} 
+                  className="season-card"
+                  onClick={() => setSelectedSeason(index + 1)}
+                >
+                  <div className="season-info">
+                    <h3 className="season-title">Season {index + 1}: Getting Started</h3>
+                    <p className="season-subtitle">Introduction to the fundamentals</p>
+                  </div>
+                  <div className="season-episodes">
+                    12 episodes
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <p className="no-seasons">No seasons available</p>
+          )}
+        </div>
+      </div>     
