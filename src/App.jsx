@@ -45,13 +45,13 @@ export default function App() {
       (selectedGenres === "all" || p.genres.includes(parseInt(selectedGenres)))
     );
 
-    // Apply search filter - matches any part of title (case-insensitive)
-      if (searchQuery.trim()) {
-      const query = searchQuery.toLowerCase().trim();
-      filtered = filtered.filter(podcast => 
-        podcast.title.toLowerCase().includes(query)
-      );
-    }
+    result.sort((a, b) => {
+      if (sortBy === "newest") return new Date(b.updated) - new Date(a.updated);
+      if (sortBy === "oldest") return new Date(a.updated) - new Date(b.updated);
+      if (sortBy === "a-z") return a.title.localeCompare(b.title);
+      if (sortBy === "z-a") return b.title.localeCompare(a.title);
+      return 0;
+    });
 
   // Apply genre filter - show podcasts that match selected genres
     if (selectedGenres.length > 0) {
