@@ -75,3 +75,17 @@ export default function PodcastModal({ podcast, genres, isOpen, onClose }) {
                 <p>{podcast.description}</p>
               </div>
             )}
+
+             {/* Genres */}
+            {genreNames.length > 0 && (
+              <div className="modal-genres">
+                <h2>Genres</h2>
+                <div className="genre-tags">
+                  {genreNames.map((genre, index) => (
+                    <span key={index} className="genre-tag">
+                      {genre}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}           
