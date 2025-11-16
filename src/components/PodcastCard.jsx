@@ -33,13 +33,27 @@ export default function PodcastCard({ podcast, genres, onClick }) {
   };
 
   return (
-    <div className="card" onClick={onClick}>
-      <img src={podcast.image} alt={podcast.title} />
+    <>
+      <div 
+        className="card" 
+        onClick={handleCardClick} 
+        style={{ cursor: 'pointer' }} 
+      >
+        <img src={podcast.image} alt={podcast.title} />
 
-      <h3>{podcast.title}</h3>
-      <p className="seasons">{podcast.seasons} seasons</p>
-      <div className="tags">{genreSpans}</div>
-      <p className="updated-text">Updated {formatDate(podcast.updated)}</p>
-    </div>
+        <h3>{podcast.title}</h3>
+        <p className="seasons">{podcast.seasons} seasons</p>
+        <div className="tags">{genreSpans}</div>
+        <p className="updated-text">Updated {formatDate(podcast.updated)}</p>
+      </div>
+
+
+      {/* ← ADD THIS MODAL COMPONENT */}
+      <PodcastModal 
+        podcast={podcast}
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
+    </>
   );
 }
