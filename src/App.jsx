@@ -62,24 +62,15 @@ export default function App() {
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   );
+
+  // Reset to page 1 when filters change
+  useEffect(() => setCurrentPage(1), [searchQuery, selectedGenre, sortBy]);
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
   
-  // Apply sorting based on selected criteria from the dropdown
-    filtered.sort((a, b) => {
-      switch (sortBy) {
-        case "newest":  // Sort by most recently updated first
-          return new Date(b.updated) - new Date(a.updated);
-        case "oldest":  // Sort by oldest updated first
-          return new Date(a.updated) - new Date(b.updated);
-        case "a-z":   // Sort alphabetically from A to Z
-          return a.title.localeCompare(b.title);
-        case "z-a":  // Sort alphabetically from Z to A
-
-          return b.title.localeCompare(a.title);
-        default:
-          return 0;  // If no sort option matches, leave order unchanged
-      }
-    });
-
      return filtered;  // Return the filtered and sorted array of podcasts
   }, [podcasts, searchQuery, sortBy, selectedGenres]);
 
