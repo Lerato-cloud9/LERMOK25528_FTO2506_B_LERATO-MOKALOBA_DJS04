@@ -84,30 +84,30 @@ export default function App() {
       <main>
         {loading && (
           <div className="message-container">
-            <div className="spinner"></div>
+          <div className="spinner"></div>
             <p>Loading podcasts...</p>
           </div>
         )}
 
         {error && (
           <div className="message-container">
-            <div className="error">Error: {error}</div>
+          <div className="error">Error: {error}</div>
           </div>
         )}
 
         {!loading && !error && (
           <>
-<section className="controls-section">
+  <section className="controls-section">
   <SearchBar value={searchQuery} onChange={setSearchQuery} />
   
   <div className="filters-container">
-    <div className="filter-group">
-      <span className="filter-label">Filter by:</span>
-      <GenreFilter 
-        selectedGenre={selectedGenre}
-        onChange={setSelectedGenre}
-        genres={genres}
-      />
+  <div className="filter-group">
+  <span className="filter-label">Filter by:</span>
+    <GenreFilter 
+      selectedGenre={selectedGenre}
+      onChange={setSelectedGenre}
+      genres={genres}
+    />
     </div>
 
     <div className="filter-group">
@@ -116,28 +116,31 @@ export default function App() {
     </div>
 
     <div className="results-count">
-      Showing {paginatedPodcasts.length} of {processedPodcasts.length} podcasts
+    Showing {paginatedPodcasts.length} of {processedPodcasts.length} podcasts
     </div>
-  </div>
-</section>
+    </div>
+  </section>
 
-                       {processedPodcasts.length === 0 ? (
-              <div className="no-results">
-                <div className="no-results-icon">🔍</div>
-                <h2>No podcasts found</h2>
-                <p>Try adjusting your search or filters.</p>
-                <button onClick={resetFilters} className="reset-btn">
-                  Reset All Filters
-                </button>
-              </div>
-            ) : (
-              <>
-                <PodcastGrid podcasts={paginatedPodcasts} genres={genres} />
-                <Pagination
-                  currentPage={currentPage}
-                  totalPages={totalPages}
-                  onPageChange={handlePageChange}
-                  totalResults={processedPodcasts.length}
+  {processedPodcasts.length === 0 ? (
+  // If there are NO podcasts after filtering/searching, show the "no results" message
+    <div className="no-results">
+    <div className="no-results-icon">🔍</div>
+      <h2>No podcasts found</h2>
+      <p>Try adjusting your search or filters.</p>
+      <button onClick={resetFilters} className="reset-btn">
+      Reset All Filters
+    </button>
+    {/* Button that clears all filters to show all podcasts again */}
+    </div>
+      ) : (
+       <>
+      <PodcastGrid podcasts={paginatedPodcasts} genres={genres} />
+       {/* Displays the podcasts for the current page inside a grid layout */}
+        <Pagination
+        currentPage={currentPage}            // The page the user is currently on
+        totalPages={totalPages}              // Total number of pages available
+        onPageChange={handlePageChange}      // Function to change pages when user clicks pagination     
+        totalResults={processedPodcasts.length} // Number of podcasts after search + filters
                 />
               </>
             )}
