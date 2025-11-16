@@ -9,14 +9,11 @@
 export default function SortControls({ value, onChange }) {
 // This component shows a label and a dropdown for choosing how to sort podcasts
   return (
-    <div className="sort-controls">                 {/* Wrapper for styling the sort section */}
-      <label htmlFor="sort-select">Sort by:</label> {/* Text label linked to the dropdown */}
+    <div className="sort-controls-dropdown">         {/* Wrapper for styling the sort section */}
       <select 
-        id="sort-select"                            // Connects label to this select box
+       className="sort-select"                     // CSS class for styling the dropdown
         value={value}                               // Current selected sorting option
         onChange={(e) => onChange(e.target.value)}  // Sends selected value back to parent
-        className="sort-select"                     // CSS class for styling the dropdown
-        aria-label="Sort podcasts"
       >
         <option value="newest">📅 Newest First</option> {/* Sort by latest updated */}
         <option value="oldest">📅 Oldest First</option> {/* Sort by earliest updated */}
