@@ -97,24 +97,29 @@ export default function App() {
 
         {!loading && !error && (
           <>
-            <section className="controls-section">
-              <SearchBar value={searchQuery} onChange={setSearchQuery} />
-              
-              <div className="filters-container">
-                <div className="filter-label">Filter by:</div>
-                <div className="filter-controls">
-                  <GenreFilter 
-                    selectedGenre={selectedGenre}
-                    onChange={setSelectedGenre}
-                    genres={genres}
-                  />
-                  <SortControls value={sortBy} onChange={setSortBy} />
-                </div>
-                <div className="results-count">
-                  Showing {paginatedPodcasts.length} of {processedPodcasts.length} podcasts
-                </div>
-              </div>
-            </section>
+<section className="controls-section">
+  <SearchBar value={searchQuery} onChange={setSearchQuery} />
+  
+  <div className="filters-container">
+    <div className="filter-group">
+      <span className="filter-label">Filter by:</span>
+      <GenreFilter 
+        selectedGenre={selectedGenre}
+        onChange={setSelectedGenre}
+        genres={genres}
+      />
+    </div>
+
+    <div className="filter-group">
+      <span className="filter-label">Sort by:</span>
+      <SortControls value={sortBy} onChange={setSortBy} />
+    </div>
+
+    <div className="results-count">
+      Showing {paginatedPodcasts.length} of {processedPodcasts.length} podcasts
+    </div>
+  </div>
+</section>
 
                        {processedPodcasts.length === 0 ? (
               <div className="no-results">
