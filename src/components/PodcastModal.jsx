@@ -10,3 +10,15 @@ import { useState } from 'react';
  * @param {Function} props.onClose - Callback function to close the modal
  * @returns {JSX.Element|null} The rendered modal or null if closed
  */
+
+export default function PodcastModal({ podcast, genres, isOpen, onClose }) {
+  const [selectedSeason, setSelectedSeason] = useState(null);
+
+  if (!isOpen || !podcast) return null;
+
+  // Close modal when clicking outside
+  const handleBackdropClick = (e) => {
+    if (e.target === e.currentTarget) {
+      onClose();
+    }
+  };
