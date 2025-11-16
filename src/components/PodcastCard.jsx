@@ -29,7 +29,8 @@ export default function PodcastCard({ podcast, genres, onClick }) {
 
   const handleCardClick = () => {
     setIsModalOpen(true);
-    if (onClick) onClick();
+    if (onClick) onClick(); 
+  };
 
   return (
     <div className="card" onClick={onClick}>
