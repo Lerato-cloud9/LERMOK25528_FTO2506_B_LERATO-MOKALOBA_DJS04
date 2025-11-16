@@ -88,4 +88,17 @@ export default function PodcastModal({ podcast, genres, isOpen, onClose }) {
                   ))}
                 </div>
               </div>
-            )}           
+            )}
+                 
+                        {/* Last updated */}
+            {podcast.updated && (
+              <div className="modal-updated">
+                📅 Last updated: {new Date(podcast.updated).toLocaleDateString('en-US', { 
+                  year: 'numeric', 
+                  month: 'long', 
+                  day: 'numeric' 
+                })}
+              </div>
+            )}
+          </div>
+        </div>      
