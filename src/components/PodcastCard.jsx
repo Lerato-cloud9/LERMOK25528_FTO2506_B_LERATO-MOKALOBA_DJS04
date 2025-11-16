@@ -48,7 +48,6 @@ export default function PodcastCard({ podcast, genres, onClick }) {
       </div>
 
 
-      {/* ← ADD THIS MODAL COMPONENT */}
       <PodcastModal 
         podcast={podcast}
         isOpen={isModalOpen}
