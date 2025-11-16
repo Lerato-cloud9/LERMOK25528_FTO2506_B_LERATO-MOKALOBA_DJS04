@@ -56,13 +56,13 @@ export default function App() {
      return result;
   }, [podcasts, searchQuery, sortBy, selectedGenres]);
 
-  // Apply genre filter - show podcasts that match selected genres
-    if (selectedGenres.length > 0) {
-      filtered = filtered.filter(podcast =>
-        podcast.genres.some(genreId => selectedGenres.includes(genreId))
-      );
-    }
-
+  // Pagination
+  const totalPages = Math.ceil(processedPodcasts.length / itemsPerPage);
+  const paginatedPodcasts = processedPodcasts.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
+  
   // Apply sorting based on selected criteria from the dropdown
     filtered.sort((a, b) => {
       switch (sortBy) {
