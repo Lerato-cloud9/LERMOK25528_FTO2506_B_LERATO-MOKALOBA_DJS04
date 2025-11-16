@@ -44,7 +44,7 @@ export default function App() {
       p.title.toLowerCase().includes(searchQuery.toLowerCase()) &&
       (selectedGenre === "all" || p.genres.includes(parseInt(selectedGenre)))
     );
-    
+
     result.sort((a, b) => {
       if (sortBy === "newest") return new Date(b.updated) - new Date(a.updated);
       if (sortBy === "oldest") return new Date(a.updated) - new Date(b.updated);
@@ -52,7 +52,7 @@ export default function App() {
       if (sortBy === "z-a") return b.title.localeCompare(a.title);
       return 0;
     });
-
+    
      return result;
   }, [podcasts, searchQuery, sortBy, selectedGenres]);
 
