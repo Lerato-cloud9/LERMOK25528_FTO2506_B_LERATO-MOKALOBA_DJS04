@@ -24,7 +24,7 @@ export default function App() {
   // UI control state - manages user interactions
   const [searchQuery, setSearchQuery] = useState("");
   const [sortBy, setSortBy] = useState("newest");
-  const [selectedGenres, setSelectedGenres] = useState([]);
+  const [selectedGenres, setSelectedGenres] = useState("all");
   const [currentPage, setCurrentPage] = useState(1);
 
   // Configuration
@@ -40,7 +40,10 @@ export default function App() {
 
   // Processes podcasts by applying search, filter, and sort operations
     const processedPodcasts = useMemo(() => {
-    let filtered = [...podcasts];
+    let result = podcasts.filter(p => 
+      p.title.toLowerCase().includes(searchQuery.toLowerCase()) &&
+      (selectedGenres === "all" || p.genres.includes(parseInt(selectedGenres)))
+    );
 
     // Apply search filter - matches any part of title (case-insensitive)
       if (searchQuery.trim()) {
