@@ -70,7 +70,14 @@ export default function App() {
     setCurrentPage(page);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
-  
+
+    const resetFilters = () => {
+    setSearchQuery("");
+    setSelectedGenre("all");
+    setSortBy("newest");
+    setCurrentPage(1);
+  };
+
      return filtered;  // Return the filtered and sorted array of podcasts
   }, [podcasts, searchQuery, sortBy, selectedGenres]);
 
